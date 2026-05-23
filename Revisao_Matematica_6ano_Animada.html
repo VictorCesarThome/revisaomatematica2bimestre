@@ -1,0 +1,2046 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎉 Revisão de Matemática - 6º Ano</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+    background: linear-gradient(135deg, #ff6b9d 0%, #ffc371 25%, #4facfe 50%, #00f2fe 75%, #a8edea 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    min-height: 100vh;
+    color: #2d3436;
+    overflow-x: hidden;
+  }
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+  /* HEADER */
+  header {
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    border: 5px solid #ffd700;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '✨';
+    position: absolute;
+    font-size: 4em;
+    top: -20px; left: 20px;
+    animation: spin 4s linear infinite;
+  }
+  header::after {
+    content: '🎯';
+    position: absolute;
+    font-size: 4em;
+    top: -20px; right: 20px;
+    animation: spin 4s linear infinite reverse;
+  }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  header h1 {
+    font-size: 2.8em;
+    color: #6c5ce7;
+    text-shadow: 3px 3px 0 #ffeaa7, 6px 6px 0 rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+  }
+  header .subtitle { font-size: 1.3em; color: #fd79a8; font-weight: bold; }
+  header .info { margin-top: 15px; font-size: 1em; color: #636e72; }
+
+  .professor-badge {
+    margin-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 1.3em;
+    font-weight: bold;
+    box-shadow: 0 6px 20px rgba(108,92,231,0.4);
+    border: 3px solid #ffd700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    animation: brilho 2s ease infinite;
+  }
+  .avatar-professor {
+    width: 55px;
+    height: 55px;
+    background: white;
+    border-radius: 50%;
+    border: 3px solid #ffd700;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    animation: balancar 3s ease-in-out infinite;
+  }
+  .avatar-professor:nth-of-type(2) {
+    animation-delay: 1.5s;
+    transform: scaleX(-1);
+  }
+  @keyframes balancar {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+  }
+  .avatar-professor:nth-of-type(2) {
+    animation: balancarEspelhado 3s ease-in-out infinite;
+    animation-delay: 1.5s;
+  }
+  @keyframes balancarEspelhado {
+    0%, 100% { transform: scaleX(-1) rotate(-5deg); }
+    50% { transform: scaleX(-1) rotate(5deg); }
+  }
+  .professor-badge span {
+    background: linear-gradient(90deg, #fff, #ffd700, #fff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: brilhoTexto 3s linear infinite;
+  }
+  @keyframes brilho {
+    0%, 100% { box-shadow: 0 6px 20px rgba(108,92,231,0.4); transform: scale(1); }
+    50% { box-shadow: 0 6px 30px rgba(255,215,0,0.7); transform: scale(1.03); }
+  }
+  @keyframes brilhoTexto {
+    0% { background-position: 200% center; }
+    100% { background-position: -200% center; }
+  }
+
+  /* INSTRUÇÃO */
+  .instrucao {
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    padding: 15px 25px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.1em;
+    color: #2d3436;
+    border: 3px solid #6c5ce7;
+    font-weight: bold;
+  }
+
+  /* SECTION BADGES */
+  .section-badge {
+    background: linear-gradient(135deg, #fd79a8, #fdcb6e);
+    color: white;
+    padding: 20px 30px;
+    border-radius: 25px;
+    margin: 40px 0 20px 0;
+    text-align: center;
+    font-size: 1.6em;
+    font-weight: bold;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    transform: rotate(-1deg);
+    border: 4px dashed white;
+  }
+  .section-badge.azul { background: linear-gradient(135deg, #4facfe, #00f2fe); transform: rotate(1deg); }
+  .section-badge.verde { background: linear-gradient(135deg, #00b894, #55efc4); transform: rotate(-1deg); }
+  .section-badge.roxo { background: linear-gradient(135deg, #a29bfe, #6c5ce7); transform: rotate(1deg); }
+
+  /* QUESTION CARDS */
+  .questao {
+    background: white;
+    border-radius: 25px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    border: 4px solid #74b9ff;
+    position: relative;
+    transition: transform 0.3s;
+  }
+  .questao:hover { transform: translateY(-3px); }
+
+  .questao.q1, .questao.q2, .questao.q3, .questao.q4, .questao.q5 { border-color: #fd79a8; }
+  .questao.q6, .questao.q7, .questao.q8, .questao.q9 { border-color: #00b894; }
+  .questao.q10, .questao.q11, .questao.q12 { border-color: #fdcb6e; }
+  .questao.q13, .questao.q14, .questao.q15 { border-color: #a29bfe; }
+
+  .q-numero {
+    position: absolute;
+    top: -20px;
+    left: 25px;
+    background: #6c5ce7;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.2em;
+    box-shadow: 0 4px 15px rgba(108,92,231,0.5);
+    border: 3px solid white;
+  }
+  .questao.q1 .q-numero, .questao.q2 .q-numero, .questao.q3 .q-numero, .questao.q4 .q-numero, .questao.q5 .q-numero { background: #fd79a8; box-shadow: 0 4px 15px rgba(253,121,168,0.5);}
+  .questao.q6 .q-numero, .questao.q7 .q-numero, .questao.q8 .q-numero, .questao.q9 .q-numero { background: #00b894; box-shadow: 0 4px 15px rgba(0,184,148,0.5);}
+  .questao.q10 .q-numero, .questao.q11 .q-numero, .questao.q12 .q-numero { background: #e17055; box-shadow: 0 4px 15px rgba(225,112,85,0.5);}
+  .questao.q13 .q-numero, .questao.q14 .q-numero, .questao.q15 .q-numero { background: #a29bfe; box-shadow: 0 4px 15px rgba(162,155,254,0.5);}
+
+  .q-enunciado {
+    background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+    font-size: 1.05em;
+    border-left: 6px solid #e17055;
+  }
+
+  /* ANIMATION AREA */
+  .animacao-box {
+    background: linear-gradient(135deg, #f5f3ff, #ede9fe);
+    border-radius: 20px;
+    padding: 25px;
+    margin: 20px 0;
+    text-align: center;
+    border: 3px dashed #a29bfe;
+    min-height: 180px;
+  }
+
+  /* BOTÃO PRINCIPAL DE PRÓXIMO */
+  .btn-proximo {
+    background: linear-gradient(135deg, #00b894, #00cec9);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 15px 5px;
+    box-shadow: 0 4px 15px rgba(0,184,148,0.4);
+    transition: all 0.3s;
+    font-family: inherit;
+    animation: pulsar 2s ease infinite;
+  }
+  .btn-proximo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,184,148,0.6);
+  }
+  .btn-proximo:disabled {
+    background: #b2bec3;
+    cursor: not-allowed;
+    animation: none;
+    opacity: 0.6;
+  }
+  @keyframes pulsar {
+    0%, 100% { box-shadow: 0 4px 15px rgba(0,184,148,0.4); }
+    50% { box-shadow: 0 4px 30px rgba(0,184,148,0.8); }
+  }
+  .btn-reset {
+    background: linear-gradient(135deg, #fd79a8, #fdcb6e);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+    font-family: inherit;
+    font-size: 1em;
+    transition: all 0.3s;
+  }
+  .btn-reset:hover { transform: scale(1.05); }
+
+  .contador-passo {
+    display: inline-block;
+    background: rgba(108,92,231,0.15);
+    color: #6c5ce7;
+    padding: 6px 18px;
+    border-radius: 25px;
+    font-weight: bold;
+    margin-left: 10px;
+    font-size: 0.95em;
+  }
+
+  /* PASSOS DA SOLUÇÃO */
+  .passo {
+    background: white;
+    border-radius: 15px;
+    padding: 15px 20px;
+    margin: 15px 0;
+    text-align: left;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    border-left: 5px solid #fdcb6e;
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.6s ease;
+    font-size: 1.05em;
+  }
+  .passo.visivel {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .passo strong { color: #6c5ce7; }
+  .passo .conta {
+    background: #f5f3ff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    color: #e17055;
+    display: inline-block;
+    margin: 5px 0;
+    font-size: 1.1em;
+  }
+
+  /* RESPOSTA FINAL */
+  .resposta-final {
+    background: linear-gradient(135deg, #00b894, #00cec9);
+    color: white;
+    padding: 25px;
+    border-radius: 20px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1.4em;
+    font-weight: bold;
+    box-shadow: 0 6px 25px rgba(0,184,148,0.4);
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.6s ease;
+    border: 4px solid white;
+  }
+  .resposta-final.visivel {
+    opacity: 1;
+    transform: scale(1);
+    animation: pulse 1s ease 0.5s;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+  .resposta-final .destaque {
+    font-size: 2em;
+    display: block;
+    margin: 10px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  }
+
+  /* CHOCOLATE */
+  .chocolate {
+    display: inline-grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    background: #5d3a1a;
+    padding: 8px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  }
+  .quadradinho {
+    width: 40px;
+    height: 30px;
+    background: linear-gradient(135deg, #8b4513, #a0522d);
+    border-radius: 4px;
+    border: 1px solid #5d3a1a;
+    transition: all 0.5s ease;
+  }
+  .quadradinho.comido-garoto {
+    background: #ff7675;
+    animation: comer 0.5s ease;
+  }
+  .quadradinho.comido-mae {
+    background: #fd79a8;
+    animation: comer 0.5s ease;
+  }
+  .quadradinho.destacado {
+    box-shadow: 0 0 15px gold;
+    transform: scale(1.1);
+  }
+  @keyframes comer {
+    0% { transform: scale(1) rotate(0); }
+    50% { transform: scale(1.4) rotate(15deg); }
+    100% { transform: scale(0.95) rotate(0); }
+  }
+
+  /* AVIÃO */
+  .aviao-svg { max-width: 350px; }
+  .motor { transition: all 0.5s; }
+  .motor.parado {
+    fill: #d63031;
+    animation: piscar 0.8s ease infinite;
+  }
+  @keyframes piscar {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  .motor.ok { fill: #00b894; }
+
+  /* CUBOS */
+  .cubo-grid {
+    display: inline-grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 3px;
+    padding: 10px;
+    background: #ffeaa7;
+    border-radius: 10px;
+  }
+  .cubinho {
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, #ffd700, #f39c12);
+    border: 2px solid #e67e22;
+    border-radius: 4px;
+    transition: all 0.5s;
+  }
+  .cubinho.retirado {
+    background: #ff7675;
+    transform: scale(0.7) rotate(45deg);
+    opacity: 0.5;
+  }
+
+  /* PROGRESS BAR */
+  .barra-progresso {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    background: #dfe6e9;
+    border-radius: 25px;
+    overflow: hidden;
+    height: 50px;
+    box-shadow: inset 0 3px 8px rgba(0,0,0,0.2);
+    border: 3px solid #2d3436;
+    display: flex;
+  }
+  .barra-acertos {
+    height: 100%;
+    background: linear-gradient(135deg, #00b894, #55efc4);
+    width: 0%;
+    transition: width 1s ease;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: bold; font-size: 1.1em;
+  }
+  .barra-erros {
+    height: 100%;
+    background: linear-gradient(135deg, #d63031, #ff7675);
+    width: 0%;
+    transition: width 1s ease;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: bold; font-size: 1.1em;
+  }
+
+  /* SALA */
+  .sala {
+    display: inline-grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 15px;
+    background: #b2bec3;
+    border-radius: 10px;
+  }
+  .carteira {
+    width: 50px; height: 50px;
+    background: #fab1a0;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5em;
+    transition: all 0.5s;
+    border: 2px solid #d35400;
+  }
+  .carteira.menina { background: #fd79a8; animation: pop 0.5s ease; }
+  .carteira.menino { background: #74b9ff; animation: pop 0.5s ease; }
+  .carteira.vazia { background: #dfe6e9; animation: pop 0.5s ease; }
+  @keyframes pop {
+    0% { transform: scale(0); }
+    60% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+
+  /* PIZZAS */
+  .pizzas-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+  .pizza-svg { width: 80px; height: 80px; animation: pop 0.5s ease; }
+
+  /* BANDEJAS */
+  .bandeja {
+    display: inline-grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    padding: 8px;
+    background: #8b6f47;
+    border-radius: 10px;
+    border: 3px solid #5d3a1a;
+    margin: 5px;
+    animation: pop 0.5s ease;
+  }
+  .bombom {
+    width: 25px; height: 25px;
+    background: radial-gradient(circle at 30% 30%, #d4a574, #5d3a1a);
+    border-radius: 50%;
+    border: 1px solid #2d1810;
+  }
+  .bombom.vazio { background: rgba(255,255,255,0.2); }
+
+  /* DECOMPOSIÇÃO MDC/MMC */
+  .decomposicao {
+    display: inline-block;
+    background: #fff5e6;
+    padding: 20px 25px;
+    border-radius: 15px;
+    border: 3px solid #fdcb6e;
+    font-family: 'Courier New', monospace;
+    font-size: 1.3em;
+    margin: 15px 0;
+  }
+  .decomposicao table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  .decomposicao td {
+    padding: 8px 18px;
+    text-align: center;
+    font-weight: bold;
+    min-width: 55px;
+  }
+  .decomposicao td.numero {
+    color: #2d3436;
+    border-right: 2px dashed #e0c080;
+  }
+  .decomposicao td.numero.ultimo {
+    /* Barra vertical sólida e grossa separando os números do divisor */
+    border-right: 4px solid #e17055;
+    padding-right: 22px;
+  }
+  .decomposicao td.primo {
+    background: #fdcb6e;
+    color: #2d3436;
+    padding-left: 22px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(253,203,110,0.5);
+  }
+  .decomposicao td.primo-vazio {
+    padding-left: 22px;
+    background: transparent;
+  }
+  .decomposicao tr.surgindo {
+    animation: aparecer 0.6s ease;
+  }
+  @keyframes aparecer {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* CAIXAS */
+  .caixas {
+    display: flex; flex-wrap: wrap; gap: 15px;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  .caixa {
+    background: #ffeaa7;
+    border: 3px solid #e17055;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 1.5em;
+    min-width: 60px;
+    text-align: center;
+    animation: pop 0.5s ease;
+  }
+
+  /* TIMELINE ÔNIBUS */
+  .timeline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 20px 0;
+    padding: 20px;
+    background: #dfe6e9;
+    border-radius: 15px;
+    border: 3px dashed #636e72;
+  }
+  .hora {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    min-width: 55px;
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid #b2bec3;
+    transition: all 0.5s;
+    font-size: 0.9em;
+  }
+  .hora.onibus-a { background: #74b9ff; color: white; border-color: #0984e3; animation: pop 0.4s ease;}
+  .hora.onibus-b { background: #fd79a8; color: white; border-color: #e84393; animation: pop 0.4s ease;}
+  .hora.juntos {
+    background: linear-gradient(135deg, #00b894, #fdcb6e);
+    color: white;
+    transform: scale(1.2);
+    border-color: gold;
+    box-shadow: 0 0 15px gold;
+  }
+
+  /* RELÓGIO */
+  .relogio-container {
+    display: flex; gap: 30px; justify-content: center;
+    flex-wrap: wrap; margin: 20px 0;
+  }
+  .relogio {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: white;
+    border: 6px solid #2d3436;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+  .ponteiro {
+    position: absolute;
+    background: #2d3436;
+    transform-origin: bottom center;
+    left: 50%;
+    border-radius: 5px;
+    transition: transform 1.5s ease;
+  }
+  .ponteiro.hora-ponteiro {
+    width: 5px; height: 35px;
+    margin-left: -2.5px;
+    bottom: 50%;
+  }
+  .centro-relogio {
+    position: absolute;
+    width: 12px; height: 12px;
+    background: #d63031;
+    border-radius: 50%;
+    top: 50%; left: 50%;
+    margin-left: -6px; margin-top: -6px;
+    z-index: 10;
+  }
+  .relogio-label {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #6c5ce7;
+  }
+
+  /* CONFETTI */
+  .confetti {
+    position: fixed;
+    width: 10px; height: 10px;
+    pointer-events: none;
+    z-index: 9999;
+    animation: confettiFall 3s linear forwards;
+  }
+  @keyframes confettiFall {
+    0% { transform: translateY(-100vh) rotate(0); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    font-size: 1.1em;
+  }
+
+  /* NAV */
+  .nav-questoes {
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+    background: rgba(255,255,255,0.95);
+    padding: 15px;
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    border: 3px solid #fdcb6e;
+  }
+  .nav-questoes button {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 2px solid #6c5ce7;
+    background: white;
+    color: #6c5ce7;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+    font-size: 0.9em;
+  }
+  .nav-questoes button:hover {
+    background: #6c5ce7;
+    color: white;
+    transform: scale(1.15);
+  }
+
+  /* FRAÇÃO */
+  .fracao {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 5px;
+    vertical-align: middle;
+    font-weight: bold;
+  }
+  .fracao .num { padding: 2px 8px; border-bottom: 3px solid #2d3436; }
+  .fracao .den { padding: 2px 8px; }
+  .fracao.grande { font-size: 1.8em; color: #e17055; }
+
+  /* BADGES INFO */
+  .info-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    color: white;
+    border-radius: 10px;
+    margin: 3px;
+    font-weight: bold;
+  }
+  .info-badge.verde { background: #00b894; }
+  .info-badge.vermelho { background: #d63031; }
+  .info-badge.rosa { background: #fd79a8; }
+  .info-badge.azul { background: #74b9ff; }
+  .info-badge.amarelo { background: #fdcb6e; color: #2d3436; }
+  .info-badge.cinza { background: #636e72; }
+  .info-badge.marrom { background: #a0522d; }
+  .info-badge.claro { background: #dfe6e9; color: #2d3436; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+  <h1>🎉 Revisão de Matemática 🎉</h1>
+  <div class="subtitle">2º Bimestre · 6º Ano</div>
+  <div class="info">Frações · Forma Mista · MDC · MMC</div>
+  <div class="professor-badge">
+    <svg class="avatar-professor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <!-- Pescoço -->
+      <rect x="32" y="58" width="16" height="12" fill="#f5c69b"/>
+      <!-- Cabeça (formato oval) -->
+      <ellipse cx="40" cy="38" rx="20" ry="24" fill="#f5c69b"/>
+      <!-- Topo da cabeça mais claro (careca) -->
+      <ellipse cx="40" cy="22" rx="16" ry="10" fill="#f0b885"/>
+      <!-- Pouco cabelo nas laterais (ruivo) -->
+      <path d="M 22 32 Q 20 22 26 18 Q 24 26 24 34 Z" fill="#c0392b"/>
+      <path d="M 58 32 Q 60 22 54 18 Q 56 26 56 34 Z" fill="#c0392b"/>
+      <!-- Cabelinho no topo (rarinho) -->
+      <ellipse cx="35" cy="17" rx="3" ry="2" fill="#c0392b"/>
+      <ellipse cx="42" cy="16" rx="3" ry="2" fill="#c0392b"/>
+      <!-- Sobrancelhas ruivas -->
+      <ellipse cx="32" cy="34" rx="3" ry="1.2" fill="#a93226"/>
+      <ellipse cx="48" cy="34" rx="3" ry="1.2" fill="#a93226"/>
+      <!-- Olhos -->
+      <circle cx="32" cy="38" r="2" fill="#2c3e50"/>
+      <circle cx="48" cy="38" r="2" fill="#2c3e50"/>
+      <circle cx="32.7" cy="37.3" r="0.6" fill="white"/>
+      <circle cx="48.7" cy="37.3" r="0.6" fill="white"/>
+      <!-- Nariz -->
+      <path d="M 40 40 Q 38 46 40 48 Q 42 46 40 40" fill="#e8a87c"/>
+      <!-- Bigode ruivo -->
+      <ellipse cx="36" cy="50" rx="3" ry="1.5" fill="#c0392b"/>
+      <ellipse cx="44" cy="50" rx="3" ry="1.5" fill="#c0392b"/>
+      <!-- Boca (sorriso) -->
+      <path d="M 36 53 Q 40 56 44 53" stroke="#8b4513" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <!-- Barba ruiva (formato cheio) -->
+      <path d="M 22 48 Q 20 55 24 62 Q 28 67 40 68 Q 52 67 56 62 Q 60 55 58 48 Q 56 56 50 60 Q 44 62 40 62 Q 36 62 30 60 Q 24 56 22 48 Z" fill="#c0392b"/>
+      <!-- Detalhes na barba -->
+      <path d="M 30 56 Q 32 60 34 62" stroke="#a93226" stroke-width="0.8" fill="none"/>
+      <path d="M 46 62 Q 48 60 50 56" stroke="#a93226" stroke-width="0.8" fill="none"/>
+      <path d="M 38 64 L 38 67" stroke="#a93226" stroke-width="0.8" fill="none"/>
+      <path d="M 42 64 L 42 67" stroke="#a93226" stroke-width="0.8" fill="none"/>
+      <!-- Orelhas -->
+      <ellipse cx="19" cy="40" rx="2.5" ry="4" fill="#f5c69b"/>
+      <ellipse cx="61" cy="40" rx="2.5" ry="4" fill="#f5c69b"/>
+    </svg>
+    <span>Professor Victor Thome</span>
+    <svg class="avatar-professor" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <rect x="32" y="58" width="16" height="12" fill="#f5c69b"/>
+      <ellipse cx="40" cy="38" rx="20" ry="24" fill="#f5c69b"/>
+      <ellipse cx="40" cy="22" rx="16" ry="10" fill="#f0b885"/>
+      <path d="M 22 32 Q 20 22 26 18 Q 24 26 24 34 Z" fill="#c0392b"/>
+      <path d="M 58 32 Q 60 22 54 18 Q 56 26 56 34 Z" fill="#c0392b"/>
+      <ellipse cx="35" cy="17" rx="3" ry="2" fill="#c0392b"/>
+      <ellipse cx="42" cy="16" rx="3" ry="2" fill="#c0392b"/>
+      <ellipse cx="32" cy="34" rx="3" ry="1.2" fill="#a93226"/>
+      <ellipse cx="48" cy="34" rx="3" ry="1.2" fill="#a93226"/>
+      <circle cx="32" cy="38" r="2" fill="#2c3e50"/>
+      <circle cx="48" cy="38" r="2" fill="#2c3e50"/>
+      <circle cx="32.7" cy="37.3" r="0.6" fill="white"/>
+      <circle cx="48.7" cy="37.3" r="0.6" fill="white"/>
+      <path d="M 40 40 Q 38 46 40 48 Q 42 46 40 40" fill="#e8a87c"/>
+      <ellipse cx="36" cy="50" rx="3" ry="1.5" fill="#c0392b"/>
+      <ellipse cx="44" cy="50" rx="3" ry="1.5" fill="#c0392b"/>
+      <path d="M 36 53 Q 40 56 44 53" stroke="#8b4513" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M 22 48 Q 20 55 24 62 Q 28 67 40 68 Q 52 67 56 62 Q 60 55 58 48 Q 56 56 50 60 Q 44 62 40 62 Q 36 62 30 60 Q 24 56 22 48 Z" fill="#c0392b"/>
+      <path d="M 30 56 Q 32 60 34 62" stroke="#a93226" stroke-width="0.8" fill="none"/>
+      <path d="M 46 62 Q 48 60 50 56" stroke="#a93226" stroke-width="0.8" fill="none"/>
+      <path d="M 38 64 L 38 67" stroke="#a93226" stroke-width="0.8" fill="none"/>
+      <path d="M 42 64 L 42 67" stroke="#a93226" stroke-width="0.8" fill="none"/>
+      <ellipse cx="19" cy="40" rx="2.5" ry="4" fill="#f5c69b"/>
+      <ellipse cx="61" cy="40" rx="2.5" ry="4" fill="#f5c69b"/>
+    </svg>
+  </div>
+</header>
+
+<div class="instrucao">
+  👆 Em cada questão, clique no botão <strong style="color:#00b894;">▶ Próximo passo</strong> para avançar a resolução no seu ritmo!
+</div>
+
+<div class="nav-questoes">
+  <button onclick="irPara(1)">1</button>
+  <button onclick="irPara(2)">2</button>
+  <button onclick="irPara(3)">3</button>
+  <button onclick="irPara(4)">4</button>
+  <button onclick="irPara(5)">5</button>
+  <button onclick="irPara(6)">6</button>
+  <button onclick="irPara(7)">7</button>
+  <button onclick="irPara(8)">8</button>
+  <button onclick="irPara(9)">9</button>
+  <button onclick="irPara(10)">10</button>
+  <button onclick="irPara(11)">11</button>
+  <button onclick="irPara(12)">12</button>
+  <button onclick="irPara(13)">13</button>
+  <button onclick="irPara(14)">14</button>
+  <button onclick="irPara(15)">15</button>
+</div>
+
+<!-- ============ FRAÇÕES PRÓPRIAS ============ -->
+<div class="section-badge">🍫 Frações Próprias (Questões 1-5)</div>
+
+<!-- Q1 -->
+<div class="questao q1" id="q1">
+  <div class="q-numero">Questão 1</div>
+  <div class="q-enunciado">
+    🍫 Uma barra de chocolate possui <b>24 quadradinhos</b> dividida em <b>6 fileiras</b>.
+    Um garoto comeu <b>2 fileiras inteiras</b> e sua mãe comeu <b>6 quadradinhos</b>.
+    Qual é a fração de quadradinhos que <b>restaram</b>?
+  </div>
+  <div class="animacao-box">
+    <div id="chocolate1" class="chocolate"></div>
+    <div style="margin-top:15px;">
+      <span class="info-badge vermelho">🧒 Garoto: <span id="g1">0</span></span>
+      <span class="info-badge rosa">👩 Mãe: <span id="m1">0</span></span>
+      <span class="info-badge marrom">🍫 Restou: <span id="r1">24</span></span>
+    </div>
+    <div style="margin-top:15px;">
+      <button class="btn-proximo" id="btn1" onclick="passo1()">▶ Próximo passo</button>
+      <button class="btn-reset" onclick="reset1()">↺ Reiniciar</button>
+      <span class="contador-passo" id="cont1">Passo 0/7</span>
+    </div>
+  </div>
+  <div id="passos1"></div>
+  <div class="resposta-final" id="resp1">
+    🎯 Resposta:
+    <span class="destaque"><span class="fracao grande"><span class="num">10</span><span class="den">24</span></span></span>
+    (dez vinte e quatro avos)
+  </div>
+</div>
+
+<!-- Q2 -->
+<div class="questao q2" id="q2">
+  <div class="q-numero">Questão 2</div>
+  <div class="q-enunciado">
+    ✈️ Um avião possui <b>2 asas</b>, e em cada asa há <b>4 motores</b>.
+    Sabendo que <b>um dos motores parou</b> de funcionar, qual é a fração dos motores que <b>ainda funcionam</b>?
+  </div>
+  <div class="animacao-box">
+    <svg class="aviao-svg" viewBox="0 0 400 200">
+      <ellipse cx="200" cy="100" rx="120" ry="20" fill="#74b9ff" stroke="#0984e3" stroke-width="2"/>
+      <ellipse cx="280" cy="95" rx="40" ry="15" fill="#74b9ff" stroke="#0984e3" stroke-width="2"/>
+      <polygon points="80,100 50,70 80,100 50,130" fill="#0984e3"/>
+      <ellipse cx="200" cy="90" rx="80" ry="35" fill="#74b9ff" stroke="#0984e3" stroke-width="2" transform="rotate(-5 200 90)"/>
+      <circle class="motor ok" id="motor-1" cx="155" cy="65" r="10" stroke="#2d3436" stroke-width="2"/>
+      <circle class="motor ok" id="motor-2" cx="180" cy="62" r="10" stroke="#2d3436" stroke-width="2"/>
+      <circle class="motor ok" id="motor-3" cx="215" cy="62" r="10" stroke="#2d3436" stroke-width="2"/>
+      <circle class="motor ok" id="motor-4" cx="240" cy="65" r="10" stroke="#2d3436" stroke-width="2"/>
+      <circle class="motor ok" id="motor-5" cx="155" cy="120" r="10" stroke="#2d3436" stroke-width="2"/>
+      <circle class="motor ok" id="motor-6" cx="180" cy="123" r="10" stroke="#2d3436" stroke-width="2"/>
+      <circle class="motor ok" id="motor-7" cx="215" cy="123" r="10" stroke="#2d3436" stroke-width="2"/>
+      <circle class="motor ok" id="motor-8" cx="240" cy="120" r="10" stroke="#2d3436" stroke-width="2"/>
+      <ellipse cx="305" cy="93" rx="8" ry="6" fill="#ffeaa7"/>
+    </svg>
+    <div style="margin-top:15px;">
+      <span class="info-badge verde">✅ Funcionam: <span id="f2">8</span></span>
+      <span class="info-badge vermelho">❌ Parado: <span id="p2">0</span></span>
+    </div>
+    <div style="margin-top:15px;">
+      <button class="btn-proximo" id="btn2" onclick="passo2()">▶ Próximo passo</button>
+      <button class="btn-reset" onclick="reset2()">↺ Reiniciar</button>
+      <span class="contador-passo" id="cont2">Passo 0/4</span>
+    </div>
+  </div>
+  <div id="passos2"></div>
+  <div class="resposta-final" id="resp2">
+    🎯 Resposta:
+    <span class="destaque"><span class="fracao grande"><span class="num">7</span><span class="den">8</span></span></span>
+    (sete oitavos)
+  </div>
+</div>
+
+<!-- Q3 -->
+<div class="questao q3" id="q3">
+  <div class="q-numero">Questão 3</div>
+  <div class="q-enunciado">
+    🧊 Um garoto retirou <b>6 peças</b> de um cubo formado por <b>27 cubinhos</b> iguais.
+    Qual fração representa a quantidade retirada?
+  </div>
+  <div class="animacao-box">
+    <div id="cubos3" class="cubo-grid"></div>
+    <div style="margin-top:15px;">
+      <span class="info-badge amarelo">🧊 Total: 27</span>
+      <span class="info-badge vermelho">❌ Retirados: <span id="r3">0</span></span>
+    </div>
+    <div style="margin-top:15px;">
+      <button class="btn-proximo" id="btn3" onclick="passo3()">▶ Próximo passo</button>
+      <button class="btn-reset" onclick="reset3()">↺ Reiniciar</button>
+      <span class="contador-passo" id="cont3">Passo 0/3</span>
+    </div>
+  </div>
+  <div id="passos3"></div>
+  <div class="resposta-final" id="resp3">
+    🎯 Resposta:
+    <span class="destaque"><span class="fracao grande"><span class="num">6</span><span class="den">27</span></span></span>
+    (seis vinte e sete avos)
+  </div>
+</div>
+
+<!-- Q4 -->
+<div class="questao q4" id="q4">
+  <div class="q-numero">Questão 4</div>
+  <div class="q-enunciado">
+    📝 Em uma prova de vestibular, uma candidata acertou <b>47 questões</b> das <b>100 questões</b>.
+    Qual fração representa o número de questões <b>erradas</b>?
+  </div>
+  <div class="animacao-box">
+    <div style="font-size: 1.2em; margin-bottom: 10px;">📊 Desempenho da candidata:</div>
+    <div class="barra-progresso">
+      <div class="barra-acertos" id="barraAcertos4"></div>
+      <div class="barra-erros" id="barraErros4"></div>
+    </div>
+    <div style="margin-top:15px;">
+      <span class="info-badge verde">✅ Acertos: 47</span>
+      <span class="info-badge vermelho">❌ Erros: <span id="e4">?</span></span>
+      <span class="info-badge cinza">📚 Total: 100</span>
+    </div>
+    <div style="margin-top:15px;">
+      <button class="btn-proximo" id="btn4" onclick="passo4()">▶ Próximo passo</button>
+      <button class="btn-reset" onclick="reset4()">↺ Reiniciar</button>
+      <span class="contador-passo" id="cont4">Passo 0/4</span>
+    </div>
+  </div>
+  <div id="passos4"></div>
+  <div class="resposta-final" id="resp4">
+    🎯 Resposta:
+    <span class="destaque"><span class="fracao grande"><span class="num">53</span><span class="den">100</span></span></span>
+    (cinquenta e três centésimos)
+  </div>
+</div>
+
+<!-- Q5 -->
+<div class="questao q5" id="q5">
+  <div class="q-numero">Questão 5</div>
+  <div class="q-enunciado">
+    🏫 Em uma sala, <b>metade</b> das carteiras tem meninas; <b>metade do que sobrou</b> tem meninos,
+    e as restantes ficam vazias. Qual a fração das carteiras <b>vazias</b>?
+  </div>
+  <div class="animacao-box">
+    <div id="sala5" class="sala"></div>
+    <div style="margin-top:15px;">
+      <span class="info-badge rosa">👧 Meninas: <span id="mn5">0</span></span>
+      <span class="info-badge azul">👦 Meninos: <span id="mo5">0</span></span>
+      <span class="info-badge claro">🪑 Vazias: <span id="v5">0</span></span>
+    </div>
+    <div style="margin-top:15px;">
+      <button class="btn-proximo" id="btn5" onclick="passo5()">▶ Próximo passo</button>
+      <button class="btn-reset" onclick="reset5()">↺ Reiniciar</button>
+      <span class="contador-passo" id="cont5">Passo 0/5</span>
+    </div>
+  </div>
+  <div id="passos5"></div>
+  <div class="resposta-final" id="resp5">
+    🎯 Resposta:
+    <span class="destaque"><span class="fracao grande"><span class="num">1</span><span class="den">4</span></span></span>
+    (um quarto)
+  </div>
+</div>
+
+<!-- ============ FORMA MISTA ============ -->
+<div class="section-badge azul">🍕 Forma Mista (Questões 6-9)</div>
+
+<!-- Q6 -->
+<div class="questao q6" id="q6">
+  <div class="q-numero">Questão 6</div>
+  <div class="q-enunciado">
+    🍕 Em um restaurante, foram pedidas <b>3 pizzas inteiras</b> mais <b>5/8</b> de outra pizza.
+    Escreva, na forma mista, a quantidade total de pizzas.
+  </div>
+  <div class="animacao-box">
+    <div class="pizzas-container" id="pizzas6"></div>
+    <div style="margin-top:15px;">
+      <button class="btn-proximo" id="btn6" onclick="passo6()">▶ Próximo passo</button>
+      <button class="btn-reset" onclick="reset6()">↺ Reiniciar</button>
+      <span class="contador-passo" id="cont6">Passo 0/3</span>
+    </div>
+  </div>
+  <div id="passos6"></div>
+  <div class="resposta-final" id="resp6">
+    🎯 Resposta:
+    <span class="destaque">3 <span class="fracao grande"><span class="num">5</span><span class="den">8</span></span></span>
+    (três inteiros e cinco oitavos)
+  </div>
+</div>
+
+<!-- Q7 -->
+<div class="questao q7" id="q7">
+  <div class="q-numero">Questão 7</div>
+  <div class="q-enunciado">
+    🥕 Na feira: <b>5 pacotes de berinjelas</b>, <b>2 pacotes de cenoura</b> e <b>1/3</b> do pacote de pimentão.
+    Quantos pacotes ao todo? (Forma mista)
+  </div>
+  <div class="animacao-box">
+    <div id="feira7" style="font-size:2.5em; line-height:1.5; min-height:60px;"></div>
+    <div style="margin-top:15px;">
+      <button class="btn-proximo" id="btn7" onclick="passo7()">▶ Próximo passo</button>
+      <button class="btn-reset" onclick="reset7()">↺ Reiniciar</button>
+      <span class="contador-passo" id="cont7">Passo 0/5</span>
+    </div>
+  </div>
+  <div id="passos7"></div>
+  <div class="resposta-final" id="resp7">
+    🎯 Resposta:
+    <span class="destaque">7 <span class="fracao grande"><span class="num">1</span><span class="den">3</span></span></span>
+    (sete inteiros e um terço)
+  </div>
+</div>
+
+<!-- Q8 -->
+<div class="questao q8" id="q8">
+  <div class="q-numero">Questão 8</div>
+  <div class="q-enunciado">
+    🍫 Uma confeitaria preparou <b>4 bandejas inteiras</b> de bombons (cada uma com 12 unidades)
+    e mais uma bandeja com apenas <b>7/12</b> completos. (Forma mista)
+  </div>
+  <div class="animacao-box">
+    <div id="bandejas8" style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center;"></div>
+    <div style="margin-top:15px;">
+      <button class="btn-proximo" id="btn8" onclick="passo8()">▶ Próximo passo</button>
+      <button class="btn-reset" onclick="reset8()">↺ Reiniciar</button>
+      <span class="contador-passo" id="cont8">Passo 0/3</span>
+    </div>
+  </div>
+  <div id="passos8"></div>
+  <div class="resposta-final" id="resp8">
+    🎯 Resposta:
+    <span class="destaque">4 <span class="fracao grande"><span class="num">7</span><span class="den">12</span></span></span>
+    (quatro inteiros e sete doze avos)
+  </div>
+</div>
+
+<!-- Q9 -->
+<div class="questao q9" id="q9">
+  <div class="q-numero">Questão 9</div>
+  <div class="q-enunciado">
+    🥟 A fração <b>39/6</b> é imprópria e corresponde à quantidade de bandejas de salgados.
+    Escreva na forma mista, mostrando os passos.
+  </div>
+  <div class="animacao-box">
+    <div id="divisao9" style="font-family:'Courier New',monospace; font-size:1.5em; min-height:120px;"></div>
+    <div style="margin-top:15px;">
+      <button class="btn-proximo" id="btn9" onclick="passo9()">▶ Próximo passo</button>
+      <button class="btn-reset" onclick="reset9()">↺ Reiniciar</button>
+      <span class="contador-passo" id="cont9">Passo 0/4</span>
+    </div>
+  </div>
+  <div id="passos9"></div>
+  <div class="resposta-final" id="resp9">
+    🎯 Resposta:
+    <span class="destaque">6 <span class="fracao grande"><span class="num">3</span><span class="den">6</span></span></span>
+    (seis inteiros e três sextos)
+  </div>
+</div>
+
+<!-- ============ MDC ============ -->
+<div class="section-badge verde">🎯 MDC (Questões 10-12)</div>
+
+<!-- Q10 -->
+<div class="questao q10" id="q10">
+  <div class="q-numero">Questão 10</div>
+  <div class="q-enunciado">
+    🚗 Um garoto coleciona miniaturas: <b>48 antigos</b>, <b>54 esportivos</b> e <b>66 customizados</b>.
+    Quer dividir em caixas com a mesma quantidade de cada tipo. <b>Quantas caixas, no máximo?</b>
+  </div>
+  <div class="animacao-box">
+    <div id="decomp10"></div>
+    <div class="caixas" id="caixas10"></div>
+    <div style="margin-top:15px;">
+      <button class="btn-proximo" id="btn10" onclick="passo10()">▶ Próximo passo</button>
+      <button class="btn-reset" onclick="reset10()">↺ Reiniciar</button>
+      <span class="contador-passo" id="cont10">Passo 0/6</span>
+    </div>
+  </div>
+  <div id="passos10"></div>
+  <div class="resposta-final" id="resp10">
+    🎯 Resposta:
+    <span class="destaque">6 caixas</span>
+    (MDC = 6)
+  </div>
+</div>
+
+<!-- Q11 -->
+<div class="questao q11" id="q11">
+  <div class="q-numero">Questão 11</div>
+  <div class="q-enunciado">
+    🔵 Um menino tem <b>36 bolinhas tipo A</b> e <b>52 do tipo B</b>.
+    Quer guardá-las igualmente em saquinhos, na <b>maior quantidade possível</b>. Quantas em cada?
+  </div>
+  <div class="animacao-box">
+    <div id="decomp11"></div>
+    <div id="bolinhas11" style="margin-top:15px;"></div>
+    <div style="margin-top:15px;">
+      <button class="btn-proximo" id="btn11" onclick="passo11()">▶ Próximo passo</button>
+      <button class="btn-reset" onclick="reset11()">↺ Reiniciar</button>
+      <span class="contador-passo" id="cont11">Passo 0/6</span>
+    </div>
+  </div>
+  <div id="passos11"></div>
+  <div class="resposta-final" id="resp11">
+    🎯 Resposta:
+    <span class="destaque">4 bolinhas</span>
+    (MDC(36,52) = 4)
+  </div>
+</div>
+
+<!-- Q12 -->
+<div class="questao q12" id="q12">
+  <div class="q-numero">Questão 12</div>
+  <div class="q-enunciado">
+    ✏️ A papelaria tem <b>25 canetas</b>, <b>30 cadernos</b> e <b>15 lápis</b>.
+    Quer montar kits com a <b>maior quantidade</b> de itens iguais. Quantos itens em cada kit?
+  </div>
+  <div class="animacao-box">
+    <div id="decomp12"></div>
+    <div id="kits12" style="margin-top:15px;"></div>
+    <div style="margin-top:15px;">
+      <button class="btn-proximo" id="btn12" onclick="passo12()">▶ Próximo passo</button>
+      <button class="btn-reset" onclick="reset12()">↺ Reiniciar</button>
+      <span class="contador-passo" id="cont12">Passo 0/5</span>
+    </div>
+  </div>
+  <div id="passos12"></div>
+  <div class="resposta-final" id="resp12">
+    🎯 Resposta:
+    <span class="destaque">5 itens</span>
+    (MDC(25,30,15) = 5)
+  </div>
+</div>
+
+<!-- ============ MMC ============ -->
+<div class="section-badge roxo">⏰ MMC (Questões 13-15)</div>
+
+<!-- Q13 -->
+<div class="questao q13" id="q13">
+  <div class="q-numero">Questão 13</div>
+  <div class="q-enunciado">
+    🚌 Ônibus para cidade <b>A</b> partem a cada <b>2 horas</b>, e para cidade <b>B</b>, a cada <b>3 horas</b>.
+    Saindo juntos, <b>de quanto em quanto tempo</b> saem juntos de novo?
+  </div>
+  <div class="animacao-box">
+    <div class="timeline" id="timeline13"></div>
+    <div id="decomp13"></div>
+    <div style="margin-top:15px;">
+      <button class="btn-proximo" id="btn13" onclick="passo13()">▶ Próximo passo</button>
+      <button class="btn-reset" onclick="reset13()">↺ Reiniciar</button>
+      <span class="contador-passo" id="cont13">Passo 0/6</span>
+    </div>
+  </div>
+  <div id="passos13"></div>
+  <div class="resposta-final" id="resp13">
+    🎯 Resposta:
+    <span class="destaque">A cada 6 horas</span>
+    (MMC(2,3) = 6)
+  </div>
+</div>
+
+<!-- Q14 -->
+<div class="questao q14" id="q14">
+  <div class="q-numero">Questão 14</div>
+  <div class="q-enunciado">
+    🖊️ Canetas hidrográficas em embalagens de <b>12</b>, esferográficas em embalagens de <b>10</b>.
+    Para montar kits com a <b>mesma quantidade</b> de cada, quantas comprar de cada tipo (no mínimo)?
+  </div>
+  <div class="animacao-box">
+    <div id="decomp14"></div>
+    <div style="margin-top:15px;" id="canetas14"></div>
+    <div style="margin-top:15px;">
+      <button class="btn-proximo" id="btn14" onclick="passo14()">▶ Próximo passo</button>
+      <button class="btn-reset" onclick="reset14()">↺ Reiniciar</button>
+      <span class="contador-passo" id="cont14">Passo 0/7</span>
+    </div>
+  </div>
+  <div id="passos14"></div>
+  <div class="resposta-final" id="resp14">
+    🎯 Resposta:
+    <span class="destaque">60 canetas de cada tipo</span>
+    (MMC(12,10) = 60)
+  </div>
+</div>
+
+<!-- Q15 -->
+<div class="questao q15" id="q15">
+  <div class="q-numero">Questão 15</div>
+  <div class="q-enunciado">
+    🐱 Um gato precisa tomar dois remédios: um a cada <b>4 horas</b>, outro a cada <b>6 horas</b>.
+    Começou às <b>11h</b>. Qual o próximo horário que toma os dois juntos?
+  </div>
+  <div class="animacao-box">
+    <div class="relogio-container">
+      <div>
+        <div class="relogio"><div class="ponteiro hora-ponteiro" style="transform: rotate(330deg);"></div><div class="centro-relogio"></div></div>
+        <div class="relogio-label">⏰ Início: 11h</div>
+      </div>
+      <div>
+        <div class="relogio"><div class="ponteiro hora-ponteiro" id="ponteiro15b" style="transform: rotate(330deg);"></div><div class="centro-relogio"></div></div>
+        <div class="relogio-label" id="horarioAtual15">⏰ ?</div>
+      </div>
+    </div>
+    <div id="decomp15"></div>
+    <div style="margin-top:15px;">
+      <button class="btn-proximo" id="btn15" onclick="passo15()">▶ Próximo passo</button>
+      <button class="btn-reset" onclick="reset15()">↺ Reiniciar</button>
+      <span class="contador-passo" id="cont15">Passo 0/7</span>
+    </div>
+  </div>
+  <div id="passos15"></div>
+  <div class="resposta-final" id="resp15">
+    🎯 Resposta:
+    <span class="destaque">23h (11 da noite)</span>
+    (MMC(4,6) = 12 horas depois)
+  </div>
+</div>
+
+<footer>
+  🌟 Bons estudos! Você consegue! 🌟
+  <br><br>
+  <div style="display: inline-flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.2); padding: 10px 25px; border-radius: 50px; border: 2px solid white;">
+    <svg style="width: 45px; height: 45px; background: white; border-radius: 50%; border: 2px solid #ffd700;" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <rect x="32" y="58" width="16" height="12" fill="#f5c69b"/>
+      <ellipse cx="40" cy="38" rx="20" ry="24" fill="#f5c69b"/>
+      <ellipse cx="40" cy="22" rx="16" ry="10" fill="#f0b885"/>
+      <path d="M 22 32 Q 20 22 26 18 Q 24 26 24 34 Z" fill="#c0392b"/>
+      <path d="M 58 32 Q 60 22 54 18 Q 56 26 56 34 Z" fill="#c0392b"/>
+      <ellipse cx="35" cy="17" rx="3" ry="2" fill="#c0392b"/>
+      <ellipse cx="42" cy="16" rx="3" ry="2" fill="#c0392b"/>
+      <ellipse cx="32" cy="34" rx="3" ry="1.2" fill="#a93226"/>
+      <ellipse cx="48" cy="34" rx="3" ry="1.2" fill="#a93226"/>
+      <circle cx="32" cy="38" r="2" fill="#2c3e50"/>
+      <circle cx="48" cy="38" r="2" fill="#2c3e50"/>
+      <circle cx="32.7" cy="37.3" r="0.6" fill="white"/>
+      <circle cx="48.7" cy="37.3" r="0.6" fill="white"/>
+      <path d="M 40 40 Q 38 46 40 48 Q 42 46 40 40" fill="#e8a87c"/>
+      <ellipse cx="36" cy="50" rx="3" ry="1.5" fill="#c0392b"/>
+      <ellipse cx="44" cy="50" rx="3" ry="1.5" fill="#c0392b"/>
+      <path d="M 36 53 Q 40 56 44 53" stroke="#8b4513" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M 22 48 Q 20 55 24 62 Q 28 67 40 68 Q 52 67 56 62 Q 60 55 58 48 Q 56 56 50 60 Q 44 62 40 62 Q 36 62 30 60 Q 24 56 22 48 Z" fill="#c0392b"/>
+      <ellipse cx="19" cy="40" rx="2.5" ry="4" fill="#f5c69b"/>
+      <ellipse cx="61" cy="40" rx="2.5" ry="4" fill="#f5c69b"/>
+    </svg>
+    <span style="font-size: 1.2em;">Aula preparada pelo <strong>Professor Victor Thome</strong> 📚</span>
+  </div>
+</footer>
+
+</div>
+
+<script>
+// ===== UTILIDADES =====
+function irPara(n) {
+  document.getElementById('q' + n).scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function adicionarPasso(containerId, texto) {
+  const container = document.getElementById(containerId);
+  const div = document.createElement('div');
+  div.className = 'passo';
+  div.innerHTML = texto;
+  container.appendChild(div);
+  setTimeout(() => div.classList.add('visivel'), 50);
+}
+
+function mostrarResposta(id) {
+  document.getElementById(id).classList.add('visivel');
+  lancarConfetti();
+}
+
+function lancarConfetti() {
+  const cores = ['#fd79a8', '#fdcb6e', '#00b894', '#74b9ff', '#a29bfe', '#ff7675'];
+  for (let i = 0; i < 30; i++) {
+    const c = document.createElement('div');
+    c.className = 'confetti';
+    c.style.left = Math.random() * 100 + 'vw';
+    c.style.background = cores[Math.floor(Math.random() * cores.length)];
+    c.style.animationDelay = Math.random() * 0.5 + 's';
+    c.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 3500);
+  }
+}
+
+function atualizarContador(id, atual, total) {
+  document.getElementById('cont' + id).textContent = `Passo ${atual}/${total}`;
+  if (atual >= total) {
+    const btn = document.getElementById('btn' + id);
+    btn.disabled = true;
+    btn.textContent = '✅ Concluído!';
+  }
+}
+
+function resetarBotao(id, total) {
+  const btn = document.getElementById('btn' + id);
+  btn.disabled = false;
+  btn.textContent = '▶ Próximo passo';
+  document.getElementById('cont' + id).textContent = `Passo 0/${total}`;
+}
+
+function montarDecomposicaoMDC(linhas, divisores) {
+  // Formato igual ao roteiro:
+  // 48 | 54 | 66 | 2
+  // 24 | 27 | 33 | 3
+  //  8 |  9 | 11 |
+  // O primo da linha i é o que divide os números da linha i (não os da linha i+1)
+  let html = '<div class="decomposicao"><table>';
+  for (let i = 0; i < linhas.length; i++) {
+    html += '<tr class="surgindo">';
+    // Números da linha
+    linhas[i].forEach((n, idx) => {
+      const classe = idx === linhas[i].length - 1 ? 'numero ultimo' : 'numero';
+      html += `<td class="${classe}">${n}</td>`;
+    });
+    // Coluna do divisor (sempre presente, com barra vertical visual)
+    if (i < divisores.length && divisores[i] !== null) {
+      html += `<td class="primo">${divisores[i]}</td>`;
+    } else {
+      html += `<td class="primo-vazio"></td>`;
+    }
+    html += '</tr>';
+  }
+  html += '</table></div>';
+  return html;
+}
+
+// ===== ESTADO DE CADA QUESTÃO =====
+const estado = {};
+for (let i = 1; i <= 15; i++) estado[i] = 0;
+
+// ====================================================
+// QUESTÃO 1 - CHOCOLATE
+// ====================================================
+function montarChocolate() {
+  const cont = document.getElementById('chocolate1');
+  cont.innerHTML = '';
+  for (let i = 0; i < 24; i++) {
+    const q = document.createElement('div');
+    q.className = 'quadradinho';
+    q.id = 'choc-' + i;
+    cont.appendChild(q);
+  }
+}
+montarChocolate();
+
+function passo1() {
+  estado[1]++;
+  const p = estado[1];
+  if (p === 1) {
+    adicionarPasso('passos1', '🔍 <strong>Passo 1:</strong> A barra tem <span class="conta">24 quadradinhos</span> e está dividida em <span class="conta">6 fileiras</span>. Quantos quadradinhos tem em cada fileira?');
+  } else if (p === 2) {
+    adicionarPasso('passos1', '➗ <strong>Passo 2:</strong> <span class="conta">24 ÷ 6 = 4 quadradinhos por fileira</span>');
+  } else if (p === 3) {
+    adicionarPasso('passos1', '🧒 <strong>Passo 3:</strong> O garoto comeu <span class="conta">2 fileiras × 4 = 8 quadradinhos</span>');
+    for (let i = 0; i < 8; i++) {
+      setTimeout(() => document.getElementById('choc-' + i).classList.add('comido-garoto'), i * 150);
+    }
+    document.getElementById('g1').textContent = '8';
+  } else if (p === 4) {
+    adicionarPasso('passos1', '👩 <strong>Passo 4:</strong> A mãe comeu mais <span class="conta">6 quadradinhos</span>');
+    for (let i = 8; i < 14; i++) {
+      setTimeout(() => document.getElementById('choc-' + i).classList.add('comido-mae'), (i - 8) * 150);
+    }
+    document.getElementById('m1').textContent = '6';
+  } else if (p === 5) {
+    adicionarPasso('passos1', '🧮 <strong>Passo 5:</strong> Total comido: <span class="conta">8 + 6 = 14 quadradinhos</span>');
+  } else if (p === 6) {
+    adicionarPasso('passos1', '🍫 <strong>Passo 6:</strong> Restaram: <span class="conta">24 − 14 = 10 quadradinhos</span>');
+    for (let i = 14; i < 24; i++) document.getElementById('choc-' + i).classList.add('destacado');
+    document.getElementById('r1').textContent = '10';
+  } else if (p === 7) {
+    adicionarPasso('passos1', '🎯 <strong>Passo 7:</strong> A fração é <span class="conta">restaram / total = 10/24</span>');
+    mostrarResposta('resp1');
+  }
+  atualizarContador(1, p, 7);
+}
+
+function reset1() {
+  estado[1] = 0;
+  montarChocolate();
+  document.getElementById('passos1').innerHTML = '';
+  document.getElementById('resp1').classList.remove('visivel');
+  document.getElementById('g1').textContent = '0';
+  document.getElementById('m1').textContent = '0';
+  document.getElementById('r1').textContent = '24';
+  resetarBotao(1, 7);
+}
+
+// ====================================================
+// QUESTÃO 2 - AVIÃO
+// ====================================================
+function passo2() {
+  estado[2]++;
+  const p = estado[2];
+  if (p === 1) {
+    adicionarPasso('passos2', '🔍 <strong>Passo 1:</strong> O avião tem <span class="conta">2 asas × 4 motores = 8 motores</span> no total');
+  } else if (p === 2) {
+    adicionarPasso('passos2', '❌ <strong>Passo 2:</strong> Um motor parou de funcionar...');
+    document.getElementById('motor-3').classList.remove('ok');
+    document.getElementById('motor-3').classList.add('parado');
+    document.getElementById('f2').textContent = '7';
+    document.getElementById('p2').textContent = '1';
+  } else if (p === 3) {
+    adicionarPasso('passos2', '✅ <strong>Passo 3:</strong> Continuam funcionando: <span class="conta">8 − 1 = 7 motores</span>');
+  } else if (p === 4) {
+    adicionarPasso('passos2', '🎯 <strong>Passo 4:</strong> A fração é <span class="conta">funcionam / total = 7/8</span>');
+    mostrarResposta('resp2');
+  }
+  atualizarContador(2, p, 4);
+}
+
+function reset2() {
+  estado[2] = 0;
+  for (let i = 1; i <= 8; i++) {
+    const m = document.getElementById('motor-' + i);
+    m.classList.remove('parado');
+    m.classList.add('ok');
+  }
+  document.getElementById('f2').textContent = '8';
+  document.getElementById('p2').textContent = '0';
+  document.getElementById('passos2').innerHTML = '';
+  document.getElementById('resp2').classList.remove('visivel');
+  resetarBotao(2, 4);
+}
+
+// ====================================================
+// QUESTÃO 3 - CUBOS
+// ====================================================
+function montarCubos() {
+  const cont = document.getElementById('cubos3');
+  cont.innerHTML = '';
+  for (let i = 0; i < 27; i++) {
+    const c = document.createElement('div');
+    c.className = 'cubinho';
+    c.id = 'cubo-' + i;
+    cont.appendChild(c);
+  }
+}
+montarCubos();
+
+function passo3() {
+  estado[3]++;
+  const p = estado[3];
+  if (p === 1) {
+    adicionarPasso('passos3', '🔍 <strong>Passo 1:</strong> O cubo total possui <span class="conta">27 cubinhos</span>');
+  } else if (p === 2) {
+    adicionarPasso('passos3', '✋ <strong>Passo 2:</strong> O garoto retirou <span class="conta">6 cubinhos</span>...');
+    for (let i = 0; i < 6; i++) {
+      setTimeout(() => {
+        document.getElementById('cubo-' + i).classList.add('retirado');
+        document.getElementById('r3').textContent = (i + 1);
+      }, i * 250);
+    }
+  } else if (p === 3) {
+    adicionarPasso('passos3', '🎯 <strong>Passo 3:</strong> A fração retirada é <span class="conta">retirados / total = 6/27</span>');
+    mostrarResposta('resp3');
+  }
+  atualizarContador(3, p, 3);
+}
+
+function reset3() {
+  estado[3] = 0;
+  montarCubos();
+  document.getElementById('r3').textContent = '0';
+  document.getElementById('passos3').innerHTML = '';
+  document.getElementById('resp3').classList.remove('visivel');
+  resetarBotao(3, 3);
+}
+
+// ====================================================
+// QUESTÃO 4 - VESTIBULAR
+// ====================================================
+function passo4() {
+  estado[4]++;
+  const p = estado[4];
+  if (p === 1) {
+    adicionarPasso('passos4', '🔍 <strong>Passo 1:</strong> Prova com <span class="conta">100 questões</span> no total');
+  } else if (p === 2) {
+    adicionarPasso('passos4', '✅ <strong>Passo 2:</strong> Ela acertou <span class="conta">47 questões</span>');
+    document.getElementById('barraAcertos4').style.width = '47%';
+    document.getElementById('barraAcertos4').textContent = '47% ✅';
+  } else if (p === 3) {
+    adicionarPasso('passos4', '🧮 <strong>Passo 3:</strong> Para encontrar os erros: <span class="conta">100 − 47 = 53 questões</span>');
+    document.getElementById('barraErros4').style.width = '53%';
+    document.getElementById('barraErros4').textContent = '53% ❌';
+    document.getElementById('e4').textContent = '53';
+  } else if (p === 4) {
+    adicionarPasso('passos4', '🎯 <strong>Passo 4:</strong> A fração de erros é <span class="conta">erros / total = 53/100</span>');
+    mostrarResposta('resp4');
+  }
+  atualizarContador(4, p, 4);
+}
+
+function reset4() {
+  estado[4] = 0;
+  document.getElementById('barraAcertos4').style.width = '0%';
+  document.getElementById('barraAcertos4').textContent = '';
+  document.getElementById('barraErros4').style.width = '0%';
+  document.getElementById('barraErros4').textContent = '';
+  document.getElementById('e4').textContent = '?';
+  document.getElementById('passos4').innerHTML = '';
+  document.getElementById('resp4').classList.remove('visivel');
+  resetarBotao(4, 4);
+}
+
+// ====================================================
+// QUESTÃO 5 - SALA
+// ====================================================
+function montarSala() {
+  const cont = document.getElementById('sala5');
+  cont.innerHTML = '';
+  for (let i = 0; i < 8; i++) {
+    const c = document.createElement('div');
+    c.className = 'carteira';
+    c.id = 'carteira-' + i;
+    c.textContent = '🪑';
+    cont.appendChild(c);
+  }
+}
+montarSala();
+
+function passo5() {
+  estado[5]++;
+  const p = estado[5];
+  if (p === 1) {
+    adicionarPasso('passos5', '🔍 <strong>Passo 1:</strong> Vamos imaginar a sala com 8 carteiras para facilitar');
+  } else if (p === 2) {
+    adicionarPasso('passos5', '👧 <strong>Passo 2:</strong> Metade (4 carteiras) tem <span class="conta">meninas</span>');
+    for (let i = 0; i < 4; i++) {
+      setTimeout(() => {
+        const c = document.getElementById('carteira-' + i);
+        c.classList.add('menina');
+        c.textContent = '👧';
+      }, i * 200);
+    }
+    document.getElementById('mn5').textContent = '4';
+  } else if (p === 3) {
+    adicionarPasso('passos5', '👦 <strong>Passo 3:</strong> Metade do que sobrou (2 carteiras) tem <span class="conta">meninos</span>');
+    for (let i = 4; i < 6; i++) {
+      setTimeout(() => {
+        const c = document.getElementById('carteira-' + i);
+        c.classList.add('menino');
+        c.textContent = '👦';
+      }, (i - 4) * 200);
+    }
+    document.getElementById('mo5').textContent = '2';
+  } else if (p === 4) {
+    adicionarPasso('passos5', '🪑 <strong>Passo 4:</strong> Sobraram <span class="conta">2 carteiras vazias</span>');
+    for (let i = 6; i < 8; i++) {
+      setTimeout(() => {
+        const c = document.getElementById('carteira-' + i);
+        c.classList.add('vazia');
+        c.textContent = '·';
+      }, (i - 6) * 200);
+    }
+    document.getElementById('v5').textContent = '2';
+  } else if (p === 5) {
+    adicionarPasso('passos5', '🎯 <strong>Passo 5:</strong> Fração de vazias = <span class="conta">2/8 = 1/4</span> (simplificando)');
+    mostrarResposta('resp5');
+  }
+  atualizarContador(5, p, 5);
+}
+
+function reset5() {
+  estado[5] = 0;
+  montarSala();
+  document.getElementById('mn5').textContent = '0';
+  document.getElementById('mo5').textContent = '0';
+  document.getElementById('v5').textContent = '0';
+  document.getElementById('passos5').innerHTML = '';
+  document.getElementById('resp5').classList.remove('visivel');
+  resetarBotao(5, 5);
+}
+
+// ====================================================
+// QUESTÃO 6 - PIZZAS
+// ====================================================
+function svgPizzaInteira() {
+  return `<svg class="pizza-svg" viewBox="0 0 80 80">
+    <circle cx="40" cy="40" r="35" fill="#fdcb6e" stroke="#e17055" stroke-width="3"/>
+    <circle cx="25" cy="30" r="4" fill="#d63031"/>
+    <circle cx="50" cy="25" r="4" fill="#d63031"/>
+    <circle cx="55" cy="50" r="4" fill="#d63031"/>
+    <circle cx="30" cy="55" r="4" fill="#d63031"/>
+    <circle cx="40" cy="40" r="3" fill="#00b894"/>
+    <circle cx="35" cy="20" r="3" fill="#00b894"/>
+    <circle cx="55" cy="40" r="3" fill="#00b894"/>
+  </svg>`;
+}
+function svgPizzaParcial(oitavos) {
+  const angulo = (oitavos / 8) * 360;
+  const radAngle = (angulo - 90) * Math.PI / 180;
+  const endX = 40 + 35 * Math.cos(radAngle);
+  const endY = 40 + 35 * Math.sin(radAngle);
+  const largeArc = angulo > 180 ? 1 : 0;
+  return `<svg class="pizza-svg" viewBox="0 0 80 80">
+    <circle cx="40" cy="40" r="35" fill="#dfe6e9" stroke="#b2bec3" stroke-width="2" stroke-dasharray="3,3"/>
+    <path d="M 40 40 L 40 5 A 35 35 0 ${largeArc} 1 ${endX} ${endY} Z" fill="#fdcb6e" stroke="#e17055" stroke-width="3"/>
+    <text x="40" y="75" text-anchor="middle" font-size="10" fill="#2d3436" font-weight="bold">${oitavos}/8</text>
+  </svg>`;
+}
+
+function passo6() {
+  estado[6]++;
+  const p = estado[6];
+  const cont = document.getElementById('pizzas6');
+  if (p === 1) {
+    adicionarPasso('passos6', '🔍 <strong>Passo 1:</strong> Foram pedidas <span class="conta">3 pizzas inteiras</span>');
+    cont.innerHTML = '';
+    for (let i = 0; i < 3; i++) {
+      setTimeout(() => {
+        const div = document.createElement('div');
+        div.innerHTML = svgPizzaInteira();
+        cont.appendChild(div);
+      }, i * 300);
+    }
+  } else if (p === 2) {
+    adicionarPasso('passos6', '🍕 <strong>Passo 2:</strong> Mais <span class="conta">5/8</span> de outra pizza');
+    const div = document.createElement('div');
+    div.innerHTML = svgPizzaParcial(5);
+    cont.appendChild(div);
+  } else if (p === 3) {
+    adicionarPasso('passos6', '➕ <strong>Passo 3:</strong> Forma mista = <span class="conta">inteiros + fração = 3 + 5/8 = 3 e 5/8</span>');
+    mostrarResposta('resp6');
+  }
+  atualizarContador(6, p, 3);
+}
+
+function reset6() {
+  estado[6] = 0;
+  document.getElementById('pizzas6').innerHTML = '';
+  document.getElementById('passos6').innerHTML = '';
+  document.getElementById('resp6').classList.remove('visivel');
+  resetarBotao(6, 3);
+}
+
+// ====================================================
+// QUESTÃO 7 - FEIRA
+// ====================================================
+function passo7() {
+  estado[7]++;
+  const p = estado[7];
+  const cont = document.getElementById('feira7');
+  if (p === 1) {
+    adicionarPasso('passos7', '🔍 <strong>Passo 1:</strong> 5 pacotes de berinjelas 🍆');
+    cont.innerHTML = '🍆🍆🍆🍆🍆';
+  } else if (p === 2) {
+    adicionarPasso('passos7', '🥕 <strong>Passo 2:</strong> Mais 2 pacotes de cenoura');
+    cont.innerHTML = '🍆🍆🍆🍆🍆 + 🥕🥕';
+  } else if (p === 3) {
+    adicionarPasso('passos7', '🌶️ <strong>Passo 3:</strong> Mais 1/3 do pacote de pimentão');
+    cont.innerHTML = '🍆🍆🍆🍆🍆 + 🥕🥕 + ⅓🌶️';
+  } else if (p === 4) {
+    adicionarPasso('passos7', '🧮 <strong>Passo 4:</strong> Somando os inteiros: <span class="conta">5 + 2 = 7 pacotes</span>');
+  } else if (p === 5) {
+    adicionarPasso('passos7', '🎯 <strong>Passo 5:</strong> Forma mista: <span class="conta">7 + 1/3 = 7 e 1/3</span>');
+    mostrarResposta('resp7');
+  }
+  atualizarContador(7, p, 5);
+}
+
+function reset7() {
+  estado[7] = 0;
+  document.getElementById('feira7').innerHTML = '';
+  document.getElementById('passos7').innerHTML = '';
+  document.getElementById('resp7').classList.remove('visivel');
+  resetarBotao(7, 5);
+}
+
+// ====================================================
+// QUESTÃO 8 - BANDEJAS
+// ====================================================
+function criarBandeja(cheios = 12) {
+  let html = '<div class="bandeja">';
+  for (let i = 0; i < 12; i++) {
+    html += i < cheios ? '<div class="bombom"></div>' : '<div class="bombom vazio"></div>';
+  }
+  html += '</div>';
+  return html;
+}
+
+function passo8() {
+  estado[8]++;
+  const p = estado[8];
+  const cont = document.getElementById('bandejas8');
+  if (p === 1) {
+    adicionarPasso('passos8', '🔍 <strong>Passo 1:</strong> Foram preparadas <span class="conta">4 bandejas inteiras</span> (cada uma com 12 bombons)');
+    cont.innerHTML = '';
+    for (let i = 0; i < 4; i++) {
+      setTimeout(() => {
+        const div = document.createElement('div');
+        div.innerHTML = criarBandeja(12);
+        cont.appendChild(div);
+      }, i * 300);
+    }
+  } else if (p === 2) {
+    adicionarPasso('passos8', '🍫 <strong>Passo 2:</strong> Mais uma bandeja com apenas <span class="conta">7/12</span> completos');
+    const div = document.createElement('div');
+    div.innerHTML = criarBandeja(7);
+    cont.appendChild(div);
+  } else if (p === 3) {
+    adicionarPasso('passos8', '🎯 <strong>Passo 3:</strong> Forma mista: <span class="conta">4 + 7/12 = 4 e 7/12</span>');
+    mostrarResposta('resp8');
+  }
+  atualizarContador(8, p, 3);
+}
+
+function reset8() {
+  estado[8] = 0;
+  document.getElementById('bandejas8').innerHTML = '';
+  document.getElementById('passos8').innerHTML = '';
+  document.getElementById('resp8').classList.remove('visivel');
+  resetarBotao(8, 3);
+}
+
+// ====================================================
+// QUESTÃO 9 - DIVISÃO 39/6
+// ====================================================
+function passo9() {
+  estado[9]++;
+  const p = estado[9];
+  const div = document.getElementById('divisao9');
+  if (p === 1) {
+    adicionarPasso('passos9', '🔍 <strong>Passo 1:</strong> Temos <span class="conta">39/6</span> (numerador 39, denominador 6)');
+    div.innerHTML = `<div style="text-align:center;">
+      <div style="display:inline-block; padding:15px; background:white; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,0.1); border:3px solid #fdcb6e;">
+        <span style="font-size:1.5em;">39 ÷ 6 = ?</span>
+      </div></div>`;
+  } else if (p === 2) {
+    adicionarPasso('passos9', '➗ <strong>Passo 2:</strong> Para converter, dividimos <span class="conta">39 ÷ 6</span>');
+    div.innerHTML = `<div style="text-align:center;">
+      <div style="display:inline-block; padding:15px; background:white; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,0.1); border:3px solid #fdcb6e;">
+        <span style="font-size:1.5em;">
+          <span style="color:#e17055;">6</span> × <span style="color:#00b894;">6</span> = 36<br>
+          39 − 36 = <span style="color:#d63031;">3</span>
+        </span>
+      </div></div>`;
+  } else if (p === 3) {
+    adicionarPasso('passos9', '🧮 <strong>Passo 3:</strong> <span class="conta">6 cabe 6 vezes em 39 (6×6=36)</span>, sobrando <span class="conta">3 de resto</span>');
+    div.innerHTML = `<div style="text-align:center;">
+      <div style="display:inline-block; padding:20px; background:white; border-radius:15px; box-shadow:0 3px 15px rgba(0,0,0,0.1); border:3px solid #00b894;">
+        <span style="font-size:1.3em;">
+          <span style="color:#e17055;">Quociente</span> = <span style="font-size:1.5em; color:#6c5ce7;">6</span> (inteiros)<br>
+          <span style="color:#e17055;">Resto</span> = <span style="font-size:1.5em; color:#6c5ce7;">3</span> (novo numerador)<br>
+          <span style="color:#e17055;">Denominador</span> = <span style="font-size:1.5em; color:#6c5ce7;">6</span> (não muda)
+        </span>
+      </div></div>`;
+  } else if (p === 4) {
+    adicionarPasso('passos9', '🎯 <strong>Passo 4:</strong> Forma mista: <span class="conta">39/6 = 6 e 3/6</span>');
+    mostrarResposta('resp9');
+  }
+  atualizarContador(9, p, 4);
+}
+
+function reset9() {
+  estado[9] = 0;
+  document.getElementById('divisao9').innerHTML = '';
+  document.getElementById('passos9').innerHTML = '';
+  document.getElementById('resp9').classList.remove('visivel');
+  resetarBotao(9, 4);
+}
+
+// ====================================================
+// QUESTÃO 10 - CARROS MDC(48,54,66)
+// ====================================================
+function passo10() {
+  estado[10]++;
+  const p = estado[10];
+  const decomp = document.getElementById('decomp10');
+  const caixas = document.getElementById('caixas10');
+  if (p === 1) {
+    adicionarPasso('passos10', '🔍 <strong>Passo 1:</strong> Temos <span class="conta">48 antigos</span>, <span class="conta">54 esportivos</span> e <span class="conta">66 customizados</span>');
+  } else if (p === 2) {
+    adicionarPasso('passos10', '💡 <strong>Passo 2:</strong> Queremos o <strong>MAIOR</strong> número que divide todos → calcularemos o <span class="conta">MDC</span>');
+    decomp.innerHTML = montarDecomposicaoMDC([[48, 54, 66]], []);
+  } else if (p === 3) {
+    adicionarPasso('passos10', '➗ <strong>Passo 3:</strong> Todos são pares → dividimos por <span class="conta">2</span>: 48÷2=24, 54÷2=27, 66÷2=33');
+    decomp.innerHTML = montarDecomposicaoMDC([[48, 54, 66], [24, 27, 33]], [2]);
+  } else if (p === 4) {
+    adicionarPasso('passos10', '➗ <strong>Passo 4:</strong> Todos divisíveis por <span class="conta">3</span>: 24÷3=8, 27÷3=9, 33÷3=11');
+    decomp.innerHTML = montarDecomposicaoMDC([[48, 54, 66], [24, 27, 33], [8, 9, 11]], [2, 3]);
+  } else if (p === 5) {
+    adicionarPasso('passos10', '🛑 <strong>Passo 5:</strong> Em <span class="conta">8, 9, 11</span> não há primo que divida os três juntos → PARAMOS');
+  } else if (p === 6) {
+    adicionarPasso('passos10', '🎯 <strong>Passo 6:</strong> <span class="conta">MDC = 2 × 3 = 6 caixas</span>');
+    caixas.innerHTML = '';
+    for (let i = 0; i < 6; i++) {
+      setTimeout(() => {
+        const c = document.createElement('div');
+        c.className = 'caixa';
+        c.innerHTML = '📦';
+        caixas.appendChild(c);
+      }, i * 200);
+    }
+    mostrarResposta('resp10');
+  }
+  atualizarContador(10, p, 6);
+}
+
+function reset10() {
+  estado[10] = 0;
+  document.getElementById('decomp10').innerHTML = '';
+  document.getElementById('caixas10').innerHTML = '';
+  document.getElementById('passos10').innerHTML = '';
+  document.getElementById('resp10').classList.remove('visivel');
+  resetarBotao(10, 6);
+}
+
+// ====================================================
+// QUESTÃO 11 - BOLINHAS MDC(36,52)
+// ====================================================
+function passo11() {
+  estado[11]++;
+  const p = estado[11];
+  const decomp = document.getElementById('decomp11');
+  if (p === 1) {
+    adicionarPasso('passos11', '🔍 <strong>Passo 1:</strong> Temos <span class="conta">36 bolinhas A</span> e <span class="conta">52 bolinhas B</span>');
+  } else if (p === 2) {
+    adicionarPasso('passos11', '💡 <strong>Passo 2:</strong> "Maior quantidade possível em cada saquinho" → calculamos o <span class="conta">MDC</span>');
+    decomp.innerHTML = montarDecomposicaoMDC([[36, 52]], []);
+  } else if (p === 3) {
+    adicionarPasso('passos11', '➗ <strong>Passo 3:</strong> Ambos pares → dividimos por <span class="conta">2</span>: 36÷2=18, 52÷2=26');
+    decomp.innerHTML = montarDecomposicaoMDC([[36, 52], [18, 26]], [2]);
+  } else if (p === 4) {
+    adicionarPasso('passos11', '➗ <strong>Passo 4:</strong> Ainda pares → dividimos por <span class="conta">2</span> de novo: 18÷2=9, 26÷2=13');
+    decomp.innerHTML = montarDecomposicaoMDC([[36, 52], [18, 26], [9, 13]], [2, 2]);
+  } else if (p === 5) {
+    adicionarPasso('passos11', '🛑 <strong>Passo 5:</strong> 9 e 13 não têm divisor comum → PARAMOS');
+  } else if (p === 6) {
+    adicionarPasso('passos11', '🎯 <strong>Passo 6:</strong> <span class="conta">MDC = 2 × 2 = 4 bolinhas em cada saquinho</span>');
+    document.getElementById('bolinhas11').innerHTML = '<span style="font-size:1.5em;">🟦🟦🟦🟦 ' + '🟦🟦🟦🟦 ' + '🟦🟦🟦🟦</span>';
+    mostrarResposta('resp11');
+  }
+  atualizarContador(11, p, 6);
+}
+
+function reset11() {
+  estado[11] = 0;
+  document.getElementById('decomp11').innerHTML = '';
+  document.getElementById('bolinhas11').innerHTML = '';
+  document.getElementById('passos11').innerHTML = '';
+  document.getElementById('resp11').classList.remove('visivel');
+  resetarBotao(11, 6);
+}
+
+// ====================================================
+// QUESTÃO 12 - PAPELARIA MDC(25,30,15)
+// ====================================================
+function passo12() {
+  estado[12]++;
+  const p = estado[12];
+  const decomp = document.getElementById('decomp12');
+  if (p === 1) {
+    adicionarPasso('passos12', '🔍 <strong>Passo 1:</strong> <span class="conta">25 canetas</span>, <span class="conta">30 cadernos</span>, <span class="conta">15 lápis</span>');
+  } else if (p === 2) {
+    adicionarPasso('passos12', '💡 <strong>Passo 2:</strong> "Maior quantidade de itens em cada kit" → <span class="conta">MDC</span>');
+    decomp.innerHTML = montarDecomposicaoMDC([[25, 30, 15]], []);
+  } else if (p === 3) {
+    adicionarPasso('passos12', '➗ <strong>Passo 3:</strong> Todos divisíveis por <span class="conta">5</span>: 25÷5=5, 30÷5=6, 15÷5=3');
+    decomp.innerHTML = montarDecomposicaoMDC([[25, 30, 15], [5, 6, 3]], [5]);
+  } else if (p === 4) {
+    adicionarPasso('passos12', '🛑 <strong>Passo 4:</strong> Em <span class="conta">5, 6, 3</span> não há divisor comum → PARAMOS');
+  } else if (p === 5) {
+    adicionarPasso('passos12', '🎯 <strong>Passo 5:</strong> <span class="conta">MDC = 5 itens em cada kit</span>');
+    document.getElementById('kits12').innerHTML = '<span style="font-size:1.3em;">📦 Cada kit: 🖊️ + 📓 + ✏️ + 🖊️ + 📓 = <strong>5 itens</strong></span>';
+    mostrarResposta('resp12');
+  }
+  atualizarContador(12, p, 5);
+}
+
+function reset12() {
+  estado[12] = 0;
+  document.getElementById('decomp12').innerHTML = '';
+  document.getElementById('kits12').innerHTML = '';
+  document.getElementById('passos12').innerHTML = '';
+  document.getElementById('resp12').classList.remove('visivel');
+  resetarBotao(12, 5);
+}
+
+// ====================================================
+// QUESTÃO 13 - ÔNIBUS MMC(2,3)
+// ====================================================
+function montarTimelineVazia() {
+  const tl = document.getElementById('timeline13');
+  tl.innerHTML = '';
+  for (let h = 0; h <= 12; h++) {
+    const div = document.createElement('div');
+    div.className = 'hora';
+    div.id = 'hora-' + h;
+    div.textContent = h + 'h';
+    tl.appendChild(div);
+  }
+}
+
+function passo13() {
+  estado[13]++;
+  const p = estado[13];
+  const decomp = document.getElementById('decomp13');
+  if (p === 1) {
+    adicionarPasso('passos13', '🔍 <strong>Passo 1:</strong> Ônibus <strong>A</strong>: a cada <span class="conta">2 horas</span>. Ônibus <strong>B</strong>: a cada <span class="conta">3 horas</span>');
+    montarTimelineVazia();
+  } else if (p === 2) {
+    adicionarPasso('passos13', '🚌 <strong>Passo 2:</strong> Marcar os horários de <strong>A</strong> (azul) - de 2 em 2 horas');
+    for (let h = 0; h <= 12; h += 2) {
+      setTimeout(() => document.getElementById('hora-' + h).classList.add('onibus-a'), (h/2) * 200);
+    }
+  } else if (p === 3) {
+    adicionarPasso('passos13', '🚌 <strong>Passo 3:</strong> Marcar os horários de <strong>B</strong> (rosa) - de 3 em 3 horas');
+    let i = 0;
+    for (let h = 0; h <= 12; h += 3) {
+      const horaH = h;
+      setTimeout(() => {
+        const div = document.getElementById('hora-' + horaH);
+        if (div.classList.contains('onibus-a')) {
+          div.classList.remove('onibus-a');
+          div.classList.add('juntos');
+          div.textContent = horaH + 'h ★';
+        } else {
+          div.classList.add('onibus-b');
+        }
+      }, i * 250);
+      i++;
+    }
+  } else if (p === 4) {
+    adicionarPasso('passos13', '⭐ <strong>Passo 4:</strong> Eles saem juntos nas horas <span class="conta">0h, 6h, 12h...</span> → de <span class="conta">6 em 6 horas</span>');
+  } else if (p === 5) {
+    adicionarPasso('passos13', '🧮 <strong>Passo 5:</strong> Conferindo com MMC:');
+    decomp.innerHTML = montarDecomposicaoMDC([[2, 3], [1, 3], [1, 1]], [2, 3]);
+  } else if (p === 6) {
+    adicionarPasso('passos13', '🎯 <strong>Passo 6:</strong> <span class="conta">MMC(2,3) = 2 × 3 = 6 horas</span>');
+    mostrarResposta('resp13');
+  }
+  atualizarContador(13, p, 6);
+}
+
+function reset13() {
+  estado[13] = 0;
+  document.getElementById('timeline13').innerHTML = '';
+  document.getElementById('decomp13').innerHTML = '';
+  document.getElementById('passos13').innerHTML = '';
+  document.getElementById('resp13').classList.remove('visivel');
+  resetarBotao(13, 6);
+}
+
+// ====================================================
+// QUESTÃO 14 - CANETAS MMC(12,10)
+// ====================================================
+function passo14() {
+  estado[14]++;
+  const p = estado[14];
+  const decomp = document.getElementById('decomp14');
+  if (p === 1) {
+    adicionarPasso('passos14', '🔍 <strong>Passo 1:</strong> Hidrográficas em embalagens de <span class="conta">12</span>, esferográficas em embalagens de <span class="conta">10</span>');
+  } else if (p === 2) {
+    adicionarPasso('passos14', '💡 <strong>Passo 2:</strong> Queremos <strong>mesma quantidade</strong> de cada tipo → calculamos o <span class="conta">MMC</span>');
+    decomp.innerHTML = montarDecomposicaoMDC([[12, 10]], []);
+  } else if (p === 3) {
+    adicionarPasso('passos14', '➗ <strong>Passo 3:</strong> Dividimos por <span class="conta">2</span>: 12÷2=6, 10÷2=5');
+    decomp.innerHTML = montarDecomposicaoMDC([[12, 10], [6, 5]], [2]);
+  } else if (p === 4) {
+    adicionarPasso('passos14', '➗ <strong>Passo 4:</strong> 6 ainda é par → dividimos só ele por <span class="conta">2</span>: 6÷2=3 (5 fica igual)');
+    decomp.innerHTML = montarDecomposicaoMDC([[12, 10], [6, 5], [3, 5]], [2, 2]);
+  } else if (p === 5) {
+    adicionarPasso('passos14', '➗ <strong>Passo 5:</strong> Dividimos só o 3 por <span class="conta">3</span>: 3÷3=1');
+    decomp.innerHTML = montarDecomposicaoMDC([[12, 10], [6, 5], [3, 5], [1, 5]], [2, 2, 3]);
+  } else if (p === 6) {
+    adicionarPasso('passos14', '➗ <strong>Passo 6:</strong> Dividimos só o 5 por <span class="conta">5</span>: 5÷5=1');
+    decomp.innerHTML = montarDecomposicaoMDC([[12, 10], [6, 5], [3, 5], [1, 5], [1, 1]], [2, 2, 3, 5]);
+  } else if (p === 7) {
+    adicionarPasso('passos14', '🎯 <strong>Passo 7:</strong> <span class="conta">MMC = 2 × 2 × 3 × 5 = 60 canetas de cada</span>');
+    document.getElementById('canetas14').innerHTML = '<span style="font-size:1.3em;">🖊️ 60 hidrográficas + 🖋️ 60 esferográficas = 5 kits de 12+10! 🎉</span>';
+    mostrarResposta('resp14');
+  }
+  atualizarContador(14, p, 7);
+}
+
+function reset14() {
+  estado[14] = 0;
+  document.getElementById('decomp14').innerHTML = '';
+  document.getElementById('canetas14').innerHTML = '';
+  document.getElementById('passos14').innerHTML = '';
+  document.getElementById('resp14').classList.remove('visivel');
+  resetarBotao(14, 7);
+}
+
+// ====================================================
+// QUESTÃO 15 - GATO MMC(4,6)
+// ====================================================
+function passo15() {
+  estado[15]++;
+  const p = estado[15];
+  const decomp = document.getElementById('decomp15');
+  const ponteiro = document.getElementById('ponteiro15b');
+  const label = document.getElementById('horarioAtual15');
+  if (p === 1) {
+    adicionarPasso('passos15', '🔍 <strong>Passo 1:</strong> Remédio A: a cada <span class="conta">4 horas</span>. Remédio B: a cada <span class="conta">6 horas</span>');
+  } else if (p === 2) {
+    adicionarPasso('passos15', '💡 <strong>Passo 2:</strong> Quando os dois coincidem? → <span class="conta">MMC(4,6)</span>');
+    decomp.innerHTML = montarDecomposicaoMDC([[4, 6]], []);
+  } else if (p === 3) {
+    adicionarPasso('passos15', '➗ <strong>Passo 3:</strong> Dividimos por <span class="conta">2</span>: 4÷2=2, 6÷2=3');
+    decomp.innerHTML = montarDecomposicaoMDC([[4, 6], [2, 3]], [2]);
+  } else if (p === 4) {
+    adicionarPasso('passos15', '➗ <strong>Passo 4:</strong> Só o 2 é par → dividimos por <span class="conta">2</span>: 2÷2=1');
+    decomp.innerHTML = montarDecomposicaoMDC([[4, 6], [2, 3], [1, 3]], [2, 2]);
+  } else if (p === 5) {
+    adicionarPasso('passos15', '➗ <strong>Passo 5:</strong> Dividimos só o 3 por <span class="conta">3</span>: 3÷3=1');
+    decomp.innerHTML = montarDecomposicaoMDC([[4, 6], [2, 3], [1, 3], [1, 1]], [2, 2, 3]);
+  } else if (p === 6) {
+    adicionarPasso('passos15', '🧮 <strong>Passo 6:</strong> <span class="conta">MMC = 2 × 2 × 3 = 12 horas depois</span>');
+  } else if (p === 7) {
+    adicionarPasso('passos15', '⏰ <strong>Passo 7:</strong> Começou às <span class="conta">11h</span>. Próxima dose juntos: <span class="conta">11h + 12h = 23h</span>');
+    ponteiro.style.transform = 'rotate(690deg)';
+    label.textContent = '⏰ Próximo: 23h';
+    label.style.color = '#00b894';
+    mostrarResposta('resp15');
+  }
+  atualizarContador(15, p, 7);
+}
+
+function reset15() {
+  estado[15] = 0;
+  document.getElementById('decomp15').innerHTML = '';
+  document.getElementById('passos15').innerHTML = '';
+  document.getElementById('resp15').classList.remove('visivel');
+  document.getElementById('ponteiro15b').style.transform = 'rotate(330deg)';
+  document.getElementById('horarioAtual15').textContent = '⏰ ?';
+  document.getElementById('horarioAtual15').style.color = '#6c5ce7';
+  resetarBotao(15, 7);
+}
+</script>
+
+</body>
+</html>
